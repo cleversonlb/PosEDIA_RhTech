@@ -1,0 +1,24 @@
+Empresa está cumprindo a lei de cotas de PCD's?
+
+Dados
+
+Nome do colaborador
+tem necessidades especiais
+tipo de necessidade especial (CID)
+data de admissão
+setor
+
+Informação
+
+qntd total de colaboradores
+qntd total de PCD's
+qntd de PCD's por setor
+
+Conhecimento
+
+% de Pcd's na fábrica
+
+Sabedoria
+
+se estou atendendo a % de PCD's na fábrica
+ 
