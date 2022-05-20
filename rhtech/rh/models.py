@@ -1,6 +1,7 @@
 from pyexpat import model
 from tkinter import N
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 
@@ -58,7 +59,13 @@ class Ponto (models.Model):
 
 class Folha_Pagamento (models.Model):
     colaborador = models.ForeignKey(Colaborador, on_delete=models.CASCADE)
-    hora_extra = models.DecimalField(decimal_places=2 ,max_digits=5 )
+    hora_extra = models.DecimalField(decimal_places=2 ,max_digits=5, default= 0)
+    data_lancamento = models.DateField(auto_now=False, null=True, blank=True)
+
+
+    def __str__(self):
+        return self.colaborador.nome
+    
 
 class NF (models.Model):
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
