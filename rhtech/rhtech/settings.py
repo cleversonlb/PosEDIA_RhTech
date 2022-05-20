@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rh.apps.RhConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,8 +76,13 @@ WSGI_APPLICATION = 'rhtech.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'database-rhtech',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'database-rhtech.cbbshvxrbo9d.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
+
     }
 }
 
@@ -121,3 +127,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+            'version': 1,
+            'filters': {
+                    'require_debug_true': {
+                    '()': 'django.utils.log.RequireDebugTrue',
+                    }
+            },
+            'handlers': {
+                    'console': {
+                    'level': 'DEBUG',
+                    'filters': ['require_debug_true'],
+                    'class': 'logging.StreamHandler',
+                    }
+            },
+            'loggers': {
+                    'django.db.backends': {
+                    'level': 'DEBUG',
+                    'handlers': ['console'],
+                    }
+            }
+    }
